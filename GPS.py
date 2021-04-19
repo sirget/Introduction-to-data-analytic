@@ -69,9 +69,9 @@ def question_5():
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
         dfs.append(df)
-    df = pd.concat(dfs, axis=0, ignore_index=True)
-    answer = df[(df["for_hire_light"] == 0) &
-                df["speed"] > 0].groupby("vid").max().mean()
+    big = pd.concat(dfs, axis=0, ignore_index=True)
+    answer = big[(big["for_hire_light"] == 0) &
+                 big["speed"] != 0].groupby("vid").max().mean()
     print(answer)
 
 
@@ -93,5 +93,5 @@ def question_6():
 # question_2()
 # question_3()
 # question_4()
-# question_5()
-question_6()
+question_5()
+# question_6()
